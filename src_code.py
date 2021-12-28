@@ -128,10 +128,10 @@ def state_0():
     notepad.gcodetxtNotepad.menu_select("File -> Save")
     time.sleep(0.05)
     notepad.gcodetxtNotepad.menu_select("File -> Exit")
-    time.sleep(0.1)
+    time.sleep(0.2)
     send_keys('%r')
     send_keys('%r')
-    time.sleep(15)
+    time.sleep(30)
 
     ################################
     loadRF.click()
@@ -279,6 +279,7 @@ def state_2():
         #print("LINE NOT FOUND")
     cv.imshow("Detected Lines (in red) - Standard Hough Line Transform", img_copy)
     if (y_dis >= 240):
+        cv.destroyAllWindows()
         state = 3
 
 
@@ -311,7 +312,7 @@ print("State 1. ANALYZE AND GENERATE GCODE")
 
 #cap = cv.VideoCapture("img_saved\\test_state.mp4")
 # cap_video = cv.VideoCapture(filename_video)
-cap_video = cv.VideoCapture(1)
+cap_video = cv.VideoCapture(0,cv.CAP_DSHOW)
 start_time = time.monotonic()
 
 while(state == 2):
